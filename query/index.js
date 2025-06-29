@@ -52,7 +52,7 @@ app.get("/posts", (req, res) => {
 // Start the server
 app.listen(PORT, async () => {
   console.log(`Query Service running at http://localhost:${PORT}`);
-  let events = await axios.get("http://localhost:8005/events");
+  let events = await axios.get("http://event-bus-srv:8005/events");
   events.data.forEach((element) => {
     const { type, data } = element.event;
     handleEvent(type, data);

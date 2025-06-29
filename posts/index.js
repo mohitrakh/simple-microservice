@@ -8,11 +8,7 @@ app.use(cors());
 const PORT = 8000;
 let posts = {};
 
-app.get("/posts", (req, res) => {
-  res.send("Hello There!");
-});
-
-app.post("/posts", async (req, res) => {
+app.post("/posts/create", async (req, res) => {
   try {
     let id = randomBytes(4).toString("hex");
     const { title } = req.body;

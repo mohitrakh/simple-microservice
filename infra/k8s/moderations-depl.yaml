@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moderations-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: moderations
+  template:
+    metadata:
+      labels:
+        app: moderations
+    spec:
+      containers:
+        - name: moderations
+          image: mohitrakh/moderations
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: moderations-srv
+spec:
+  selector:
+    app: moderations
+  type: ClusterIP
+  ports:
+    - name: moderations
+      protocol: TCP
+      port: 8004
+      targetPort: 8004

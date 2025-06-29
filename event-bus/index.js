@@ -16,9 +16,9 @@ app.post("/events", async (req, res) => {
 
   const services = [
     "http://posts-clusterip-srv:8000/events",
-    // "http://localhost:8001/events",
-    // "http://localhost:8003/events",
-    // "http://localhost:8004/events",
+    "http://comments-srv:8001/events",
+    "http://query-srv:8003/events",
+    "http://moderations-srv:8004/events",
   ];
 
   await Promise.all(
